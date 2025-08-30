@@ -1,0 +1,229 @@
+/* ==============================
+   CARRUSEL PRÓXIMOS ESTRENOS
+   ============================== */
+
+.titulo-upcoming {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: #DAAD5C;
+  letter-spacing: 1px;
+}
+
+#upcoming-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.fila-upcoming {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+}
+
+.upcoming-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+.proximo-item {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.proximo-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;      /* centra verticalmente info */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  height: 500px;            /* ajusta según diseño, puede ser vh también */
+}
+
+.poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* mantiene proporción y rellena el wrapper */
+  position: absolute;     /* para que info quede encima */
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.info {
+  position: absolute;   /* sobre el poster */
+  left: 0;              /* alineada a la izquierda */
+  width: 50%;           /* ancho deseado */
+  height: 50%;          /* altura deseada */
+  padding: 20px 40px;   /* ajusta según diseño */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* contenido dentro alineado abajo */
+  color: #fff;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+
+.info h3 {
+  font-size: 2rem;
+  color: #DAAD5C;
+  
+  font-weight: 700;
+  text-align: left;
+}
+
+.info p {
+  color: #fff;
+  font-size: 1.08rem;
+  margin-bottom: 28px;
+  line-height: 1.5;
+  text-align: left;
+  /* eliminar max-height y overflow para mostrar todo el texto */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-container button {
+  padding: 12px 32px;
+  color: #fff;
+  background-color: #1f6feb;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-container button:hover {
+  background: #DAAD5C;
+  color: #1f6feb;
+}
+
+/* Botones de scroll */
+.btn-scroll-upcoming {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+#btn-upcoming-prev { right: 0; }
+#btn-upcoming-next { left: 0; }
+
+.btn-scroll-upcoming:hover {
+  background-color: #DAAD5C;
+  color: #1f6feb;
+}
+
+@media (max-width: 768px) {
+  .titulo-upcoming {
+    font-size: 1.6rem;
+    margin: 30px 0 15px 0;
+  }
+
+  .fila-upcoming {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .proximo-wrapper {
+    flex-direction: column;    /* poster arriba, info debajo */
+    border-radius: 12px;
+    overflow: hidden;
+    height: auto;              /* que se ajuste al contenido */
+  }
+
+  .proximo-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .proximo-wrapper {
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  .poster {
+    width: 100%;
+    height: auto;              /* mantiene proporción */
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    position: static;          /* quita absolute para que info esté debajo */
+  }
+
+  .info {
+
+    width: 100%;
+    height: auto;              /* se ajusta al contenido */
+    padding: 15px 20px;        /* más cercano al poster */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+.info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;            /* necesario para justify-content */
+  justify-content: center;
+  gap: 10px;                /* espacio entre botones */
+}
+
+  .btn-container {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-container button {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .btn-scroll-upcoming {
+    width: 35px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  #btn-upcoming-prev,
+  #btn-upcoming-next {
+    display: none;
+  }
+}

@@ -1,0 +1,122 @@
+#movie {
+  display: flex;
+  flex-direction: column; /* primero arriba, luego medio, luego filas inferiores */
+  gap: 20px;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+}
+
+/* Parte superior: título, año, duración a la izquierda, score a la derecha */
+#movie-top {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  border-bottom: 1px solid #DAAD5C;
+}
+
+#title {
+  margin-left: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#year,
+#runtime,
+#score,
+#tag-line {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  color: #ccc;
+  font-size: 16px;
+}
+
+#rating {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: gold;
+}
+
+/* Parte media: backdrop a la izquierda, trailer a la derecha */
+#movie-middle {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 1200px;     /* ancho total del contenedor */
+  height: 400px;
+  margin: 0 auto 0 auto;        /* centra el contenedor en la página */
+  padding: 0 20px;       /* algo de espacio lateral */
+  box-sizing: border-box;
+}
+
+/* Backdrop a la izquierda */
+#backdrop {
+  flex: 0 0 300px;       /* ancho fijo de 300px */
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+/* Trailer a la derecha */
+#movie-trailer {
+  flex: 1;               /* ocupa todo el espacio restante */
+  height: 400px;         /* mismo alto que el backdrop */
+  width: 800px;
+  border-radius: 10px;
+}
+
+/* Parte inferior: géneros, tag-line y credits en filas */
+#movie-bottom {
+  margin-left: 200px;
+  margin-right: 200px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+#genres{
+  color: #DAAD5C;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #DAAD5C;
+  border-bottom: 1px solid #DAAD5C;
+  
+}
+
+#genres span {
+  display: inline-block;
+  background-color: #f0e6d2;  /* color de fondo sutil */
+  color: #333;                /* color del texto */
+  padding: 3px 8px;           /* espacio interno */
+  margin-right: 5px;          /* separación entre cápsulas */
+  border-radius: 12px;        /* radio para que queden redondeadas */
+  font-size: 0.9rem;
+}
+
+#director{
+  color: #DAAD5C;
+  padding-top: 10px;
+  border-top: 1px solid #DAAD5C;
+}
+
+#cast, #writers {
+  color: #DAAD5C;
+  padding-top: 10px; /* sin borde */
+  border-top: none;
+}
+
+#director span,
+#writers span,
+#cast span {
+  color: white;
+  display: inline-block;
+  margin-right: 5px;          /* separación entre cápsulas */
+  border-radius: 12px;        /* radio para que queden redondeadas */
+}

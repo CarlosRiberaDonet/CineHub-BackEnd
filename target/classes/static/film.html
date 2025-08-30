@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>CineHub</title>
+    <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/film.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <meta name="language" content="Spanish" />
+  <meta name="author" content="Carlos Ribera Donet" />
+</head>
+
+  <body>
+
+      <!--header-->
+      <div id="header"></div>
+      <main>
+        <div id="movie-info">
+          <article id="movie">
+            <!-- Parte superior -->
+            <div id="movie-top">
+              <div id="movie-left">
+                <div ><span id="title">Título</span></div>
+                <span id="year">Año</span>
+                <span id="runtime">Duración</span>
+              </div>
+              <div id="score">
+                <span>Puntuación</span>
+                <div id="rating">8.5</div>
+              </div>
+            </div>
+
+            <!-- Parte media -->
+            <div id="movie-middle">
+              <div id="backdrop"></div>
+              <iframe id="movie-trailer" width="400" height="350" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <!-- Parte inferior -->
+            <div id="movie-bottom">
+              <div id="genres"></div>
+              <div id="info-container">
+                <p id="info"></p>
+              </div>
+              <div id="director"></div>
+              <div id="writers"></div>
+              <div id="cast"></div>
+            </div>
+          </article>
+        </div>
+      </main>
+      <!-- Footer -->
+      <div id="footer"></div>
+
+      <script type="module"> 
+      import { loadMovie } from './js/movieDetails.js';
+
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const movieId = params.get('id'); // obtiene el id de la query string
+        if (movieId) {
+          loadMovie(movieId); // carga los datos en la página
+        }
+      });
+    </script>
+  </body>
+</html>
