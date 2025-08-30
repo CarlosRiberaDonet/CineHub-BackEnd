@@ -8,11 +8,11 @@
 		<version>3.4.8</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.peliculasonlinehd</groupId>
-	<artifactId>peliculasonlinehd</artifactId>
+	<groupId>com.CineHub</groupId>
+	<artifactId>CineHub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>peliculasonlinehd</name>
-	<description>project peliculasonlinehd</description>
+	<name>CineHub</name>
+	<description>project CineHub</description>
 	<url/>
 	<licenses>
 		<license/>
