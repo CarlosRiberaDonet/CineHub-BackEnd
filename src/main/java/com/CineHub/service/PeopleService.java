@@ -21,7 +21,7 @@ public class PeopleService {
     public PeopleResponse getFamousPeople(){
         String peopleUrl = "https://api.themoviedb.org/3/person/popular";
         try{
-            String json = apiDAO.getFromApi(peopleUrl);
+            String json = apiDAO.getFromApiKey(peopleUrl);
             return mapper.readValue(json, PeopleResponse.class);
         } catch(Exception e){
             System.out.println("Error al obtener la lista de famosos desde getFamousPeople");

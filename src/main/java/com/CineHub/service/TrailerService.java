@@ -19,7 +19,7 @@ public class TrailerService {
         String urlTrailer = "https://api.themoviedb.org/3/movie/" + idPelicula + "/videos";
         try{
             // Obtengo el JSON del API
-            String json = apiDAO.getFromApi(urlTrailer);
+            String json = apiDAO.getFromApiKey(urlTrailer);
 
             // Deserialize a TrailerResponse
             TrailerResponse trailerResponse = mapper.readValue(json, TrailerResponse.class);

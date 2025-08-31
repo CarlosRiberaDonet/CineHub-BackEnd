@@ -21,19 +21,22 @@ public class FilmController {
         return movieService.getUpcomingMovies();
     }
 
-    @GetMapping("/playing")
-    public MovieResponse carteleraPeliculas(){
-        return movieService.getNowPlaying();
+    @GetMapping("/playing/{page}")
+    public MovieResponse carteleraPeliculas(@PathVariable ("page") int page){
+
+        return movieService.getNowPlaying(page);
     }
 
-    @GetMapping("/trendingDayMovies")
-    public MovieResponse trendingDay(){
-        return movieService.getTrendingDayMovies();
+    @GetMapping("/trendingDayMovies/{page}")
+    public MovieResponse trendingDay(int page){
+
+        return movieService.getTrendingDayMovies(page);
     }
 
-    @GetMapping("/topMovies")
-    public MovieResponse topMovies(){
-        return movieService.getTopMovies();
+    @GetMapping("/topMovies/{page}")
+    public MovieResponse topMovies(int page){
+
+        return movieService.getTopMovies(page);
     }
 
     @GetMapping("/details/{id}")

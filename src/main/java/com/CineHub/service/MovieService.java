@@ -20,7 +20,7 @@ public class MovieService {
     public MovieResponse getUpcomingMovies(){
         String upcomingMoviesUrl = "https://api.themoviedb.org/3/movie/upcoming";
         try{
-            String json = apiDAO.getFromApi(upcomingMoviesUrl);
+            String json = apiDAO.getFromApiKey(upcomingMoviesUrl);
             return mapper.readValue(json, MovieResponse.class);
         }catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getUpcomingMovies");
@@ -30,10 +30,10 @@ public class MovieService {
     }
 
     // Obtiene lista de películas en cartelera
-    public MovieResponse getNowPlaying(){
+    public MovieResponse getNowPlaying(int page){
         String nowPlayingUrl = "https://api.themoviedb.org/3/movie/now_playing";
         try{
-            String json = apiDAO.getFromApi(nowPlayingUrl);
+            String json = apiDAO.getFromApi(nowPlayingUrl, page);
             return mapper.readValue(json, MovieResponse.class);
         }catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getNowPlaying");
@@ -43,10 +43,10 @@ public class MovieService {
     }
 
     // Obtiene trending day de películas
-    public MovieResponse getTrendingDayMovies(){
+    public MovieResponse getTrendingDayMovies(int page){
         String trendingDayMoviesUrl = "https://api.themoviedb.org/3/trending/movie/day?";
         try{
-            String json = apiDAO.getFromApi(trendingDayMoviesUrl);
+            String json = apiDAO.getFromApi(trendingDayMoviesUrl, page);
             return mapper.readValue(json, MovieResponse.class);
         }catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getTrendingDayMovies");
@@ -56,10 +56,10 @@ public class MovieService {
     }
 
     // Obtiene las películas mejor valoradas
-    public MovieResponse getTopMovies(){
+    public MovieResponse getTopMovies(int page){
         String topMoviesUrl = "https://api.themoviedb.org/3/movie/top_rated";
         try{
-            String json = apiDAO.getFromApi(topMoviesUrl);
+            String json = apiDAO.getFromApi(topMoviesUrl, page);
             return mapper.readValue(json, MovieResponse.class);
         } catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getTopMovies");

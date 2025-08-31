@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Repository
 public class ApiDAO {
@@ -22,15 +23,20 @@ public class ApiDAO {
     private final String API_KEY = "96b24ab2d382261eb4bab68949d449b1";
 
     // Conexión a la API mediante BEARER_TOKEN v4 → devuelve siempre JSON en String
-    public String getFromApi(String url) {
+    public String getFromApi(String url, int page) {
         HttpHeaders headers = new HttpHeaders();
         headers.set("accept", "application/json");
         headers.set("Authorization", "Bearer " + BEARER_TOKEN);
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
+        // construir la URL con el parámetro page
+        String fullUrl = UriComponentsBuilder.fromHttpUrl(url)
+                .queryParam("page", page)
+                .toUriString();
+
         ResponseEntity<String> response = restTemplate.exchange(
-                url,
+                fullUrl,
                 HttpMethod.GET,
                 entity,
                 String.class
