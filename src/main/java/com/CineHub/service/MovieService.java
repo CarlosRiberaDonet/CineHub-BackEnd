@@ -59,7 +59,7 @@ public class MovieService {
     public MovieResponse getTopMovies(int page){
         String topMoviesUrl = "https://api.themoviedb.org/3/movie/top_rated";
         try{
-            String json = apiDAO.getFromApi(topMoviesUrl, page);
+            String json = apiDAO.getFromApiKeyPage(topMoviesUrl, page);
             return mapper.readValue(json, MovieResponse.class);
         } catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getTopMovies");
