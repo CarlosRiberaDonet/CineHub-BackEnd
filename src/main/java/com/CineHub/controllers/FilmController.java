@@ -28,13 +28,13 @@ public class FilmController {
     }
 
     @GetMapping("/trendingDayMovies/{page}")
-    public MovieResponse trendingDay(int page){
+    public MovieResponse trendingDay(@PathVariable ("page") int page){
 
         return movieService.getTrendingDayMovies(page);
     }
 
     @GetMapping("/topMovies/{page}")
-    public MovieResponse topMovies(int page){
+    public MovieResponse topMovies(@PathVariable ("page") int page){
 
         return movieService.getTopMovies(page);
     }
