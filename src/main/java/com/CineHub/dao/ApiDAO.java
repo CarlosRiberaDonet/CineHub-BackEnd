@@ -68,7 +68,7 @@ public class ApiDAO {
     // Conexión a URL con API KEY + número de página
     public String getFromApiKeyPage(String urlFilm, int page) {
 
-        String url = urlFilm + "?api_key=" + API_KEY + "&page=" + page;
+        String url = urlFilm + "?api_key=" + API_KEY + "&region=ES&page=" + page;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("accept", "application/json");
