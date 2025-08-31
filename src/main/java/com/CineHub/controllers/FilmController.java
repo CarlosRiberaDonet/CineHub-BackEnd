@@ -43,4 +43,9 @@ public class FilmController {
     public FilmDetails detallesPelicula(@PathVariable ("id") int idPelicula){
         return movieService.getFilmDetails(idPelicula);
     }
+
+    @GetMapping("/relatedMovies/{id}")
+    public MovieResponse relatedMovies(@PathVariable ("id") int idPelicula){
+        return movieService.getRelatedMovies(idPelicula);
+    }
 }

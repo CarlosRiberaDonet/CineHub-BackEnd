@@ -1,5 +1,6 @@
 package com.CineHub.service;
 
+import com.CineHub.entity.Movie;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.CineHub.dao.ApiDAO;
 import com.CineHub.dto.MovieResponse;
@@ -76,6 +77,18 @@ public class MovieService {
             return mapper.readValue(json, FilmDetails.class);
         }catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas desde getFilmDetails");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public MovieResponse getRelatedMovies(int idPelicula){
+        String relatedMoviesUrl = "https://api.themoviedb.org/3/movie/" + idPelicula + "similar";
+        try{
+            String json = apiDAO.getFromApiKey(relatedMoviesUrl);
+            return mapper.readValue(json, MovieResponse.class);
+        }catch (Exception e){
+            System.out.println("Error al obtener la lista de peliculas relacionadas desde getRelatedMovies");
             e.printStackTrace();
         }
         return null;
