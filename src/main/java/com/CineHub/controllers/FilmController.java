@@ -18,6 +18,7 @@ public class FilmController {
 
     @GetMapping("/upcoming")
     public MovieResponse proximasPeliculas(){
+
         return movieService.getUpcomingMovies();
     }
 
@@ -33,8 +34,8 @@ public class FilmController {
         return movieService.getTrendingDayMovies(page);
     }
 
-    @GetMapping("/topMovies")
-    public MovieResponse topMovies(@RequestParam(defaultValue = "1") int page){
+    @GetMapping("/topMovies/{page}")
+    public MovieResponse topMovies(@PathVariable ("page") int page){
         return movieService.getTopMovies(page);
     }
 

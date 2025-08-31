@@ -44,11 +44,31 @@ public class ApiDAO {
         return response.getBody();
     }
 
+    // Conexión a URL con API KEY
     public String getFromApiKey(String urlFilm) {
 
-        String url = urlFilm + "?api_key=" + API_KEY + "&language=es-ES";
+        String url = urlFilm + "?api_key=" + API_KEY;
 
         System.out.println("Esta es la url construida: " + url);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("accept", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                String.class
+        );
+        return response.getBody();
+    }
+
+    // Conexión a URL con API KEY + número de página
+    public String getFromApiKeyPage(String urlFilm, int page) {
+
+        String url = urlFilm + "?api_key=" + API_KEY + "&page=" + page;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("accept", "application/json");
