@@ -33,9 +33,8 @@ public class FilmController {
         return movieService.getTrendingDayMovies(page);
     }
 
-    @GetMapping("/topMovies/{page}")
-    public MovieResponse topMovies(@PathVariable ("page") int page){
-
+    @GetMapping("/topMovies")
+    public MovieResponse topMovies(@RequestParam(defaultValue = "1") int page){
         return movieService.getTopMovies(page);
     }
 
