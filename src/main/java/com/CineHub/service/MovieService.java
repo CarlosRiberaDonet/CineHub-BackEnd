@@ -83,7 +83,7 @@ public class MovieService {
     }
 
     public MovieResponse getRelatedMovies(int idPelicula){
-        String relatedMoviesUrl = "https://api.themoviedb.org/3/movie/" + idPelicula + "similar";
+        String relatedMoviesUrl = "https://api.themoviedb.org/3/movie/" + idPelicula + "/similar";
         try{
             String json = apiDAO.getFromApiKey(relatedMoviesUrl);
             return mapper.readValue(json, MovieResponse.class);
