@@ -1,5 +1,6 @@
 package com.CineHub.service;
 
+import com.CineHub.entity.Famous;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.CineHub.dao.ApiDAO;
 import com.CineHub.dto.CreditsResponse;
@@ -30,6 +31,7 @@ public class PeopleService {
         return null;
     }
 
+    // Obtiene reparto de actores/actrices principales de una película
     public CreditsResponse getCast(int idPelicula){
         String castUrl = "https://api.themoviedb.org/3/movie/" + idPelicula + "/credits";
         try{
@@ -37,6 +39,19 @@ public class PeopleService {
             return mapper.readValue(json, CreditsResponse.class);
         } catch(Exception e){
             System.out.println("Error al obtener la lista de cast desde getCast");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // Obtiene información de actor/actriz mediante su id
+    public Famous getFamousById(int id){
+        String famousUrl = "https://api.themoviedb.org/3/person/" + id;
+        try{
+            String json = apiDAO.getFromApiKey(famousUrl);
+            return mapper.readValue(json, Famous.class);
+        } catch (Exception e){
+            System.out.println("Error al obtener actor desde getFamousById");
             e.printStackTrace();
         }
         return null;

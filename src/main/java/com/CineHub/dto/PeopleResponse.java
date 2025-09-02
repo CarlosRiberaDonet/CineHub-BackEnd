@@ -2,7 +2,7 @@ package com.CineHub.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.CineHub.entity.People;
+import com.CineHub.entity.Famous;
 
 import java.util.List;
 
@@ -16,11 +16,11 @@ public class PeopleResponse {
     @JsonProperty("total_results")
     private int results;
     @JsonProperty("results") // El campo "results" del JSON mapea a popularPeopleList
-    private List<People> popularPeopleList;
+    private List<Famous> popularFamousList;
 
     // CONSTRUCTOR
-    public PeopleResponse(List<People> popularPeopleList){
-        this.popularPeopleList = popularPeopleList;
+    public PeopleResponse(List<Famous> popularFamousList){
+        this.popularFamousList = popularFamousList;
     }
 
     public PeopleResponse(){
@@ -52,11 +52,11 @@ public class PeopleResponse {
         this.results = results;
     }
 
-    public List<People> getPopularPeopleList(){
-        return popularPeopleList;
+    public List<Famous> getPopularPeopleList(){
+        return popularFamousList;
     }
 
-    public void setPopularPeopleList(List<People> popularPeopleList){
-        this.popularPeopleList = popularPeopleList;
+    public void setPopularPeopleList(List<Famous> popularFamousList){
+        this.popularFamousList = popularFamousList;
     }
 }
