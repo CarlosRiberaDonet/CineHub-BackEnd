@@ -3,7 +3,7 @@ package com.CineHub.controllers;
 
 import com.CineHub.entity.Famous;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.CineHub.dto.CreditsResponse;
+import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.PeopleResponse;
 import com.CineHub.service.PeopleService;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +35,7 @@ public class PeopleController {
 
     // Devuelve reparto principal de una película
     @GetMapping("/credits/{id}")
-    public CreditsResponse getCredits(@PathVariable("id") int idPelicula){
-
+    public MovieCreditsResponse getCredits(@PathVariable("id") int idPelicula){
         return peopleService.getCast(idPelicula);
     }
 }

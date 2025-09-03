@@ -3,7 +3,7 @@ package com.CineHub.service;
 import com.CineHub.entity.Famous;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.CineHub.dao.ApiDAO;
-import com.CineHub.dto.CreditsResponse;
+import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.PeopleResponse;
 import org.springframework.stereotype.Service;
 
@@ -32,11 +32,11 @@ public class PeopleService {
     }
 
     // Obtiene reparto de actores/actrices principales de una película
-    public CreditsResponse getCast(int idPelicula){
+    public MovieCreditsResponse getCast(int idPelicula){
         String castUrl = "https://api.themoviedb.org/3/movie/" + idPelicula + "/credits";
         try{
             String json = apiDAO.getFromApiKey(castUrl);
-            return mapper.readValue(json, CreditsResponse.class);
+            return mapper.readValue(json, MovieCreditsResponse.class);
         } catch(Exception e){
             System.out.println("Error al obtener la lista de cast desde getCast");
             e.printStackTrace();

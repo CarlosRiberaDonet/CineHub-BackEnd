@@ -7,14 +7,14 @@ import com.CineHub.entity.Crew;
 import java.util.List;
 // Ignora propiedades del JSON que no estén mapeadas en esta clase
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreditsResponse {
+public class MovieCreditsResponse {
 
     private int id;
     private List<Cast> cast;
     private List<Crew> crew;
 
     // CONSTRUCTOR
-    public CreditsResponse() {
+    public MovieCreditsResponse() {
     }
 
     // GETTERS Y SETTERS

@@ -1,5 +1,6 @@
 package com.CineHub.controllers;
 
+import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.MovieResponse;
 import com.CineHub.entity.FilmDetails;
 import com.CineHub.service.MovieService;
@@ -18,7 +19,6 @@ public class FilmController {
 
     @GetMapping("/upcoming")
     public MovieResponse proximasPeliculas(){
-
         return movieService.getUpcomingMovies();
     }
 
@@ -47,5 +47,10 @@ public class FilmController {
     @GetMapping("/relatedMovies/{id}")
     public MovieResponse relatedMovies(@PathVariable ("id") int idPelicula){
         return movieService.getRelatedMovies(idPelicula);
+    }
+
+    @GetMapping("/famousMovies/{idFamous}")
+    public MovieCreditsResponse getFamousMovies(@PathVariable("idFamous") int idFamous){
+        return movieService.getFamousMovieCredits(idFamous);
     }
 }
