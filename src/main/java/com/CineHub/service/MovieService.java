@@ -1,11 +1,17 @@
 package com.CineHub.service;
 
 import com.CineHub.dto.MovieCreditsResponse;
+import com.CineHub.entity.Cast;
+import com.CineHub.entity.Crew;
+import com.CineHub.entity.Movie;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.CineHub.dao.ApiDAO;
 import com.CineHub.dto.MovieResponse;
 import com.CineHub.entity.FilmDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -94,69 +100,33 @@ public class MovieService {
         return null;
     }
 
-    public MovieCreditsResponse getFamousMovieCredits(int idFamous){
+    public List<Movie> getFamousMovieCredits(int idFamous) {
         String famousMoviesUrl = "https://api.themoviedb.org/3/person/" + idFamous + "/movie_credits";
-        try{
+        try {
             String json = apiDAO.getFromApiKey(famousMoviesUrl);
-            return mapper.readValue(json, MovieCreditsResponse.class);
-        } catch(Exception e){
-            System.out.println("Error al obtener la lista de peliculas relacionadas desde getRelatedMovies");
+            MovieCreditsResponse movieCreditsResponse = mapper.readValue(json, MovieCreditsResponse.class);
+
+            return movieCreditsResponseToMovie(movieCreditsResponse);
+        } catch (Exception e) {
+            System.out.println("Error al obtener la lista de peliculas relacionadas desde getFamousMovieCredits");
             e.printStackTrace();
+            return new ArrayList<>(); // para no devolver null
         }
-        return null;
     }
 
-    /*public MovieResponse getMoviesByFilters(int page, Filters filters){
-        String filtersUrl = buildUrlFilters(page, filters);
-        return apiDAO.getMovies(filtersUrl);
+    // Método que unifica las listas Crew y Cast recibidas en una sola lista de tipo Movie
+    public List<Movie> movieCreditsResponseToMovie(MovieCreditsResponse movieCreditsResponse) {
+        List<Movie> movieList = new ArrayList<>();
+
+        if (movieCreditsResponse.getCrew() != null) {
+            movieList.addAll(movieCreditsResponse.getCrew());  // Crew hereda de Movie
+        }
+
+        if (movieCreditsResponse.getCast() != null) {
+            movieList.addAll(movieCreditsResponse.getCast());  // Cast hereda de Movie
+        }
+
+        return movieList;
     }
-
-    public String buildUrlFilters(int page, Filters filters) {
-        StringBuilder filtersUrl = new StringBuilder("https://api.themoviedb.org/3/" +
-                "discover/movie?page=").append(page);
-
-        if (filters.isAdult()) {
-            filtersUrl.append("&include_adult=true");
-        } else {
-            filtersUrl.append("&include_adult=false");
-        }
-
-        if (filters.getOriginalLanguage() != null && !filters.getOriginalLanguage().isEmpty()) {
-            filtersUrl.append("&language=").append(filters.getOriginalLanguage());
-        }
-
-        if (filters.getGenreId() != null && !filters.getGenreId().isEmpty()) {
-            String genres = filters.getGenreId().stream()
-                    .map(String::valueOf)
-                    .collect(Collectors.joining(","));
-            filtersUrl.append("&with_genres=").append(genres);
-        }
-
-        if (filters.getOriginalTitle() != null && !filters.getOriginalTitle().isEmpty()) {
-            filtersUrl.append("&query=").append(URLEncoder.encode(filters.getOriginalTitle(),
-                    StandardCharsets.UTF_8));
-        }
-
-        if (filters.getPopularity() > 0) {
-            // No existe parámetro directo para filtrar por popularidad exacta,
-            // pero puedes ordenar o usar mínimo
-            filtersUrl.append("&sort_by=popularity.desc");
-        }
-
-        if (filters.getReleaseDate() != null) {
-            filtersUrl.append("&primary_release_date.gte=").append(filters.getReleaseDate().
-                    toString());
-        }
-
-        if (filters.getVoteAverage() > 0) {
-            filtersUrl.append("&vote_average.gte=").append(filters.getVoteAverage());
-        }
-
-        if (filters.getVoteCount() > 0) {
-            filtersUrl.append("&vote_count.gte=").append(filters.getVoteCount());
-        }
-        System.out.println("URL CREADA: " + filtersUrl);
-        return filtersUrl.toString();
-    }*/
 }
 
