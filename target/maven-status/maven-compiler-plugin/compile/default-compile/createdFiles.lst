@@ -13,13 +13,13 @@ com\CineHub\entity\Movie.class
 com\CineHub\config\CorsConfig.class
 com\CineHub\dto\MovieResponse.class
 com\CineHub\controllers\TrailerController.class
-com\CineHub\dto\CreditsResponse.class
 com\CineHub\controllers\FiltersController.class
 com\CineHub\config\CorsConfig$1.class
 com\CineHub\entity\FilmDetails$SpokenLanguage.class
 com\CineHub\service\MovieService.class
 com\CineHub\controllers\PeopleController.class
 com\CineHub\entity\FilmDetails$Genre.class
+com\CineHub\dto\MovieCreditsResponse.class
 com\CineHub\entity\FilmDetails$ProductionCompany.class
 com\CineHub\dto\TrailerResponse.class
 com\CineHub\dto\PeopleResponse.class

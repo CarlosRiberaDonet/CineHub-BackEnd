@@ -5,7 +5,7 @@ C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\controllers\FiltersContro
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\controllers\PeopleController.java
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\controllers\TrailerController.java
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dao\ApiDAO.java
-C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dto\CreditsResponse.java
+C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dto\MovieCreditsResponse.java
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dto\MovieDetailsResponse.java
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dto\MovieResponse.java
 C:\Proyectos\CineHub-BackEnd\src\main\java\com\CineHub\dto\PeopleResponse.java
