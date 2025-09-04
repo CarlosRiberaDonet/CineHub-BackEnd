@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 // Ignora propiedades del JSON que no estén mapeadas en esta clase
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Cast {
+public class Cast extends Movie {
 
     @JsonProperty("cast_id")
     private int castId;
@@ -15,6 +15,8 @@ public class Cast {
     private int gender;
     private int order;
     // CONSTRUCTOR
+
+
     public Cast() {
     }
 
