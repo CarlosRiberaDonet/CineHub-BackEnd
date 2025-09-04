@@ -1,6 +1,7 @@
 package com.CineHub.service;
 
 import com.CineHub.dto.MovieCreditsResponse;
+import com.CineHub.dto.PeopleResponse;
 import com.CineHub.entity.Cast;
 import com.CineHub.entity.Crew;
 import com.CineHub.entity.Movie;
@@ -100,33 +101,17 @@ public class MovieService {
         return null;
     }
 
-    public List<Movie> getFamousMovieCredits(int idFamous) {
+    public MovieCreditsResponse getFamousMovieCredits(int idFamous) {
         String famousMoviesUrl = "https://api.themoviedb.org/3/person/" + idFamous + "/movie_credits";
         try {
             String json = apiDAO.getFromApiKey(famousMoviesUrl);
-            MovieCreditsResponse movieCreditsResponse = mapper.readValue(json, MovieCreditsResponse.class);
+            return mapper.readValue(json, MovieCreditsResponse.class);
 
-            return movieCreditsResponseToMovie(movieCreditsResponse);
         } catch (Exception e) {
             System.out.println("Error al obtener la lista de peliculas relacionadas desde getFamousMovieCredits");
             e.printStackTrace();
-            return new ArrayList<>(); // para no devolver null
+            return null;
         }
-    }
-
-    // Método que unifica las listas Crew y Cast recibidas en una sola lista de tipo Movie
-    public List<Movie> movieCreditsResponseToMovie(MovieCreditsResponse movieCreditsResponse) {
-        List<Movie> movieList = new ArrayList<>();
-
-        if (movieCreditsResponse.getCrew() != null) {
-            movieList.addAll(movieCreditsResponse.getCrew());  // Crew hereda de Movie
-        }
-
-        if (movieCreditsResponse.getCast() != null) {
-            movieList.addAll(movieCreditsResponse.getCast());  // Cast hereda de Movie
-        }
-
-        return movieList;
     }
 }
 

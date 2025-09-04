@@ -25,3 +25,4 @@ com\CineHub\dto\TrailerResponse.class
 com\CineHub\dto\PeopleResponse.class
 com\CineHub\entity\KnownFor.class
 com\CineHub\controllers\FilmController.class
+com\CineHub\entity\CastMovie.class

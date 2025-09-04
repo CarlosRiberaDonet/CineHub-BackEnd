@@ -19,7 +19,6 @@ public class CineHubApplication {
 		Map<String, Object> props = new HashMap<>();
 		props.put("server.port", port);
 		app.setDefaultProperties(props);
-
 		app.run(args);
 	}
 }
