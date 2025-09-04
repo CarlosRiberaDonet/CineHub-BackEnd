@@ -28,14 +28,15 @@ public class PeopleController {
     }
 
     // Devuelve información de actores/actrices
-    @GetMapping("/{id}")
-    public Famous getPeopleInfo(@PathVariable("id") int id){
-        return peopleService.getFamousById(id);
+    @GetMapping("/{idFamous}")
+    public Famous getPeopleInfo(@PathVariable("id") int idFamous){
+
+        return peopleService.getFamousById(idFamous);
     }
 
     // Devuelve reparto principal de una película
-    @GetMapping("/credits/{id}")
-    public MovieCreditsResponse getCredits(@PathVariable("id") int idPelicula){
+    @GetMapping("/credits/{idPelicula}")
+    public MovieCreditsResponse getCredits(@PathVariable("idPelicula") int idPelicula){
         return peopleService.getCast(idPelicula);
     }
 }

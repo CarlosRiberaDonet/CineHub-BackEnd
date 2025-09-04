@@ -1,6 +1,5 @@
 package com.CineHub.controllers;
 
-import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.MovieResponse;
 import com.CineHub.entity.FilmDetails;
 import com.CineHub.entity.Movie;
