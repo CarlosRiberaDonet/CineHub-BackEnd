@@ -52,6 +52,7 @@ public class FilmController {
         return movieService.getRelatedMovies(idPelicula);
     }
 
+    // Obtiene películas de un actor mediante su id
     @GetMapping("/famousMovies/{idFamous}")
     public MovieCreditsResponse getFamousMovies(@PathVariable("idFamous") int idFamous){
         return movieService.getFamousMovieCredits(idFamous);
