@@ -1,14 +1,12 @@
 package com.CineHub.service;
 
+import com.CineHub.dto.MovieCastCrewReponse;
 import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.PeopleResponse;
-import com.CineHub.entity.Cast;
-import com.CineHub.entity.Crew;
-import com.CineHub.entity.Movie;
+import com.CineHub.entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.CineHub.dao.ApiDAO;
 import com.CineHub.dto.MovieResponse;
-import com.CineHub.entity.FilmDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -101,17 +99,42 @@ public class MovieService {
         return null;
     }
 
-    public MovieCreditsResponse getFamousMovieCredits(int idFamous) {
+    public MovieCastCrewReponse getFamousMovieCredits(int idFamous) {
         String famousMoviesUrl = "https://api.themoviedb.org/3/person/" + idFamous + "/movie_credits";
         try {
             String json = apiDAO.getFromApiKey(famousMoviesUrl);
-            return mapper.readValue(json, MovieCreditsResponse.class);
-
+            return mapper.readValue(json, MovieCastCrewReponse.class);
         } catch (Exception e) {
             System.out.println("Error al obtener la lista de peliculas relacionadas desde getFamousMovieCredits");
             e.printStackTrace();
             return null;
         }
     }
+
+    // Casteo la los objetos Cast y Crew a tipo List<Movie>
+    /*public MovieResponse unifyCastAndCrew(MovieCastCrewReponse response) {
+        List<MovieResponse> movies = new ArrayList<>();
+
+        for (MovieCast c : response.getMovieCast()) {
+            MovieResponse m = new Movie();
+            m.setId(c.getId());
+            m.setTitle(c.getTitle());
+            m.setPosterPath(c.getPosterPath());
+            m.setVoteAverage(c.getVoteAverage());
+            m.setReleaseDate(c.getDate());
+            movies.add(m);
+        }
+
+        for (MovieCrew c : response.getMovieCrew()) {
+            Movie m = new Movie();
+            m.setId(c.getId());
+            m.setTitle(c.getTitle());
+            m.setPosterPath(c.getPosterPath());
+            m.setVoteAverage(c.getVoteAverage());
+            m.setReleaseDate(c.getReleaseDate());
+            movies.add(m);
+        }
+        return movies;
+    }*/
 }
 

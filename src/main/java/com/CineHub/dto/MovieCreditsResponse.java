@@ -1,8 +1,7 @@
 package com.CineHub.dto;
 
+import com.CineHub.entity.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.CineHub.entity.Cast;
-import com.CineHub.entity.Crew;
 
 import java.util.List;
 // Ignora propiedades del JSON que no estén mapeadas en esta clase

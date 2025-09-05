@@ -1,5 +1,6 @@
 package com.CineHub.controllers;
 
+import com.CineHub.dto.MovieCastCrewReponse;
 import com.CineHub.dto.MovieCreditsResponse;
 import com.CineHub.dto.MovieResponse;
 import com.CineHub.entity.FilmDetails;
@@ -20,33 +21,39 @@ public class FilmController {
         this.movieService = movieService;
     }
 
+    // Obtiene próximos estrenos
     @GetMapping("/upcoming")
     public MovieResponse proximasPeliculas(){
         return movieService.getUpcomingMovies();
     }
 
+    // Obtiene películas y series en cartelera
     @GetMapping("/playing/{page}")
     public MovieResponse carteleraPeliculas(@PathVariable ("page") int page){
 
         return movieService.getNowPlaying(page);
     }
 
+    // Obtiene películas tendencias del día
     @GetMapping("/trendingDayMovies/{page}")
     public MovieResponse trendingDay(@PathVariable ("page") int page){
 
         return movieService.getTrendingDayMovies(page);
     }
 
+    // Obtiene el top películas mejor valoradas
     @GetMapping("/topMovies/{page}")
     public MovieResponse topMovies(@PathVariable ("page") int page){
         return movieService.getTopMovies(page);
     }
 
+    // Obtiene detalles de una pelicula a través de su id
     @GetMapping("/details/{id}")
     public FilmDetails detallesPelicula(@PathVariable ("id") int idPelicula){
         return movieService.getFilmDetails(idPelicula);
     }
 
+    // Obtiene películas relacionadas
     @GetMapping("/relatedMovies/{id}")
     public MovieResponse relatedMovies(@PathVariable ("id") int idPelicula){
         return movieService.getRelatedMovies(idPelicula);
@@ -54,7 +61,7 @@ public class FilmController {
 
     // Obtiene películas de un actor mediante su id
     @GetMapping("/famousMovies/{idFamous}")
-    public MovieCreditsResponse getFamousMovies(@PathVariable("idFamous") int idFamous){
+    public MovieCastCrewReponse getFamousMovies(@PathVariable("idFamous") int idFamous){
         return movieService.getFamousMovieCredits(idFamous);
     }
 }

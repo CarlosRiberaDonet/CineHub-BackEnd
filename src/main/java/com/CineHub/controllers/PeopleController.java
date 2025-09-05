@@ -29,7 +29,7 @@ public class PeopleController {
 
     // Devuelve información de actores/actrices
     @GetMapping("/{idFamous}")
-    public Famous getPeopleInfo(@PathVariable("id") int idFamous){
+    public Famous getPeopleInfo(@PathVariable("idFamous") int idFamous){
 
         return peopleService.getFamousById(idFamous);
     }

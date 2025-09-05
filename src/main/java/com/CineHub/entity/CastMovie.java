@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CastMovie {
 
     private int id;
-    private boolean adult;
     private String originalLanguage;
     private String originalTitle;
     private String title;
@@ -40,14 +39,6 @@ public class CastMovie {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public boolean isAdult() {
-        return adult;
-    }
-
-    public void setAdult(boolean adult) {
-        this.adult = adult;
     }
 
     public String getOriginalLanguage() {
