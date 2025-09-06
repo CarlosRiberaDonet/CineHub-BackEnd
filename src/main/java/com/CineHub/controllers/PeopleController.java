@@ -21,7 +21,7 @@ public class PeopleController {
     }
 
     // Devuelve famosos más populares
-    @GetMapping("mostPopular")
+    @GetMapping("/mostPopular")
     public PeopleResponse getMostPopularPeopleList(){
 
         return peopleService.getFamousPeople();
