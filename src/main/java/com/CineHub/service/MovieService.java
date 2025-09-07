@@ -111,30 +111,16 @@ public class MovieService {
         }
     }
 
-    // Casteo la los objetos Cast y Crew a tipo List<Movie>
-    /*public MovieResponse unifyCastAndCrew(MovieCastCrewReponse response) {
-        List<MovieResponse> movies = new ArrayList<>();
-
-        for (MovieCast c : response.getMovieCast()) {
-            MovieResponse m = new Movie();
-            m.setId(c.getId());
-            m.setTitle(c.getTitle());
-            m.setPosterPath(c.getPosterPath());
-            m.setVoteAverage(c.getVoteAverage());
-            m.setReleaseDate(c.getDate());
-            movies.add(m);
+    public MovieResponse getPopularMovies(int page){
+        String popularMoviesUrl = "https://api.themoviedb.org/3/movie/popular";
+        try{
+            String json = apiDAO.getFromApiKeyPage(popularMoviesUrl, page);
+            return mapper.readValue(json, MovieResponse.class);
+        } catch (Exception e) {
+            System.out.println("Error al obtener la lista de peliculas populares desde getPopularMovies");
+            new RuntimeException(e);
         }
-
-        for (MovieCrew c : response.getMovieCrew()) {
-            Movie m = new Movie();
-            m.setId(c.getId());
-            m.setTitle(c.getTitle());
-            m.setPosterPath(c.getPosterPath());
-            m.setVoteAverage(c.getVoteAverage());
-            m.setReleaseDate(c.getReleaseDate());
-            movies.add(m);
-        }
-        return movies;
-    }*/
+        return null;
+    }
 }
 

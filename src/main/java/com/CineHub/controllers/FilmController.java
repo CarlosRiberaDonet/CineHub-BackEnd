@@ -47,6 +47,11 @@ public class FilmController {
         return movieService.getTopMovies(page);
     }
 
+    // Obtiene peliculas populares
+    @GetMapping("/popularMovies/{page}")
+    public MovieResponse popularMovies(@PathVariable ("page") int page){
+        return movieService.getPopularMovies(page);
+    }
     // Obtiene detalles de una pelicula a través de su id
     @GetMapping("/details/{id}")
     public FilmDetails detallesPelicula(@PathVariable ("id") int idPelicula){
