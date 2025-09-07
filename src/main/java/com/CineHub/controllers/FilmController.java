@@ -69,4 +69,11 @@ public class FilmController {
     public MovieCastCrewReponse getFamousMovies(@PathVariable("idFamous") int idFamous){
         return movieService.getFamousMovieCredits(idFamous);
     }
+
+    // Filtro para buscar películas por género
+    @GetMapping("/discoverGenre/{idGenre}/{page}")
+    public MovieResponse discoverMoviesByGenre(@PathVariable ("idGenre") int idGenre,
+                                               @PathVariable("page") int page){
+        return movieService.getMoviesByGenre(idGenre, page);
+    }
 }

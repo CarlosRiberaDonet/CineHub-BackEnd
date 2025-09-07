@@ -9,12 +9,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Movie {
 
-    private int id;
     private boolean adult;
     @JsonProperty("backdrop_path")
     private String backDropPath;
     @JsonProperty("genre_ids")
     private List<Integer> genreId;
+    private int id;
     @JsonProperty("original_language")
     private String originalLanguage;
     @JsonProperty("original_title")

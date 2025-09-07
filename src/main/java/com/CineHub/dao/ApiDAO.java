@@ -68,8 +68,27 @@ public class ApiDAO {
     // Conexión a URL con API KEY + número de página
     public String getFromApiKeyPage(String urlFilm, int page) {
 
-        String url = urlFilm + "?api_key=" + API_KEY + "&region=ES&page=" + page;
+        String url = urlFilm + "?api_key=" + API_KEY + "&region=ES&language=es-ES&page=" + page;
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("accept", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                entity,
+                String.class
+        );
+        return response.getBody();
+    }
+
+    // Conexión a url con API + género + página
+    public String getFromApiKeyGenrePage(String urlFilm, int genre, int page) {
+
+        String url = urlFilm + "?api_key=" + API_KEY + "&language=es-ES&with_genres=" + genre + "&page=" + page;
+        System.out.println("URL: " + url);
         HttpHeaders headers = new HttpHeaders();
         headers.set("accept", "application/json");
 
