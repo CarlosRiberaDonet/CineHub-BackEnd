@@ -126,13 +126,14 @@ public class MovieService {
     // Obtiene películas mediante su id de género
     public MovieResponse getMoviesByGenre(int idGenre, int page){
         String movieGenreUrl = "https://api.themoviedb.org/3/discover/movie";
+
         try{
-            String json = apiDAO.getFromApiKeyGenrePage(movieGenreUrl, idGenre , page);
+            String json = apiDAO.getFromApiKeyGenrePage(movieGenreUrl, idGenre, page);
+            return mapper.readValue(json, MovieResponse.class);
         } catch (Exception e){
             System.out.println("Error al obtener la lista de peliculas filtradas por género desde getMoviesByGenre");
 
         }
-
         return null;
     }
 }
